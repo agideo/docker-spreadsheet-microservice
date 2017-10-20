@@ -60,3 +60,16 @@ result = RestClient::Request.execute({
   payload: {'filename' => 'test.xls', 'file' => File.open(file, r)}
 })
 ```
+
+
+### `docker-compose` 运行参考
+
+```
+version: '3'
+
+services:
+  spreadsheet-microservice:
+    image: agideo/spreadsheet-microservice:latest
+    environment:
+      - RACK_ENV=production
+```
