@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  main:
+    image: ruby:2.3
+    volumes:
+      - "./app:/app"
+    ports:
+      - "9292:80"
+    command: sh -c 'env >> /etc/environment ; tail -f /dev/null'
+
+  test:
+    build: .
+    image: spreadsheet
+    ports:
+      - "19292:80"
