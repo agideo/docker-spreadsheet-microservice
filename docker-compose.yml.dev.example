@@ -7,6 +7,8 @@ services:
       - "./app:/app"
     ports:
       - "9292:80"
+    environment:
+      - RACK_ENV=development
     command: sh -c 'env >> /etc/environment ; tail -f /dev/null'
 
   test:

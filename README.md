@@ -57,7 +57,8 @@ result = RestClient::Request.execute({
   method: :post,
   url: 'http://localhost:9292/csv',
   raw_response: true,
-  payload: {'filename' => 'test.xls', 'file' => File.open(file, r)}
+  payload: {'filename' => 'test.xls', 'file' => File.open(file, r)}.to_json,
+  headers: {content_type: :json, accept: :json}
 })
 ```
 
@@ -70,6 +71,4 @@ version: '3'
 services:
   spreadsheet-microservice:
     image: agideo/spreadsheet-microservice:latest
-    environment:
-      - RACK_ENV=production
 ```
