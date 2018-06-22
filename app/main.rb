@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'logger'
 require 'json'
 require 'csv'
 require_relative 'lib/array_parser'
@@ -42,7 +43,7 @@ post '/csv' do
     'data' => CSV.read(params['file']['tempfile'])
   }).output
 
-  render result
+  send_data result
 end
 
 def send_data(result)
